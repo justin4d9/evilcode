@@ -1,2 +1,2 @@
 # evilcode
-try lang
+study
