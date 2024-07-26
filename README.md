@@ -1,2 +1,2 @@
 # evilcode
-study
+ecstasy every 6 weeks
