@@ -1,0 +1,7 @@
+see directory
+
+download files
+
+upload files
+
+catch errors without losing connection
